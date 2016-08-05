@@ -1,5 +1,4 @@
 #include "arph.h"
-
 void *arpRequest(){
     libnet_t *lc;
     char errbuf[LIBNET_ERRBUF_SIZE];
@@ -33,7 +32,7 @@ void *arpRequest(){
         }
         tmp[strlen(tmp)-1]='\0';
         pclose(pipe);
-        printf("[+] Set own ip to gateway\n\n");
+        printf("[+] Set own ip to gateway\n");
 
         my_ip_addr = libnet_name2addr4(lc, tmp, LIBNET_DONT_RESOLVE);
     }
@@ -104,7 +103,6 @@ void *arpRequest(){
     free(arpArgv.gwAddr);
     libnet_destroy(lc);
 }
-
 
 void printMac(const u_char *mac){
     int cnt=0;

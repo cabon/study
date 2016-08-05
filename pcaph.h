@@ -6,6 +6,7 @@
 #include <sys/socket.h>
 #include <sys/ioctl.h>
 #include <netinet/in.h>
+#include <time.h>
 #include "arph.h"
 
 #define TIMEOUT             1000
@@ -17,7 +18,11 @@ struct sniff_ethernet {
         u_char ether_shost[ETHER_ADDR_LEN];    /* source host address */
         u_short ether_type;                     /* IP? ARP? RARP? etc */
 };
+
 extern struct arpArgument arpArgv;
 void *get_packet();
+void *relay_packet();
+void setMacAddress(unsigned char* cmdLine, unsigned char* output);
+int macCompare(unsigned char *sMac, unsigned char *arpMac);
 
 #endif
